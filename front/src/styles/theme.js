@@ -8,6 +8,8 @@ export default {
     WHITE: "#F4EDE8",
 
     GRAY_500: "#948F99",  
-    GRAY_300: "#CAC4CF"  
+    GRAY_300: "#CAC4CF",
+
+    BORDER_BOTTOM_LINE: "#3E3B47"
   }
 }
