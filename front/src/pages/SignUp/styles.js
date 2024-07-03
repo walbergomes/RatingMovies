@@ -33,6 +33,10 @@ export const Form = styled.form`
     font-size: 24px;
     margin: 48px 0;
   }
+
+  > button {
+    margin: 16px 0 42px;
+  }
 `
 
 export const BackButton = styled.div`

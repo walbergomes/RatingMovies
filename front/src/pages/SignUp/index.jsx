@@ -13,9 +13,9 @@ export function SignUp() {
         <p>Aplicação para acompanhar tudo que assistir.</p>
         <h2>Crie sua conta</h2>
 
-        <Input placeholder="Nmme" icon={MdOutlinePersonOutline}/>
-        <Input placeholder="Email" icon={MdOutlineEmail}/>
-        <Input placeholder="Senha" icon={MdOutlineLock}/>
+        <Input placeholder="Nome" icon={MdOutlinePersonOutline}/>
+        <Input placeholder="Email" type="email" icon={MdOutlineEmail}/>
+        <Input placeholder="Senha" type="password" icon={MdOutlineLock}/>
 
         <Button title="Cadastrar" />
 

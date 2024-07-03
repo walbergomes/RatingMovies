@@ -38,6 +38,10 @@ export const Form = styled.form`
     color: ${({ theme }) => theme.COLORS.PINK};
     text-align: center;
   }
+
+  > button {
+    margin: 16px 0 42px;
+  } 
 `
 
 export const Background = styled.div`

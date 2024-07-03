@@ -28,7 +28,6 @@ export const Profile = styled.div`
     cursor: pointer;
   }
 
-
   > div {
     display: flex;
     flex-direction: column;
