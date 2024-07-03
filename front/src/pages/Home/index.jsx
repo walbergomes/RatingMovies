@@ -4,20 +4,23 @@ import { HiPlus } from "react-icons/hi";
 
 import { Header } from "../../components/Header"
 import { Button } from "../../components/Button"
-
+import { Note } from "../../components/Note";
 
 
 export function Home() {
   return ( 
-    <>
+    <Container>
     <Header />
 
-    <Container>
       <Top>
         <h2>Meus filmes</h2>
         <Button title="Adicionar" icon={HiPlus} />
       </Top>
-    </Container>
-    </>
+
+      <main>
+        <Note />
+        <Note />
+      </main>
+    </ Container>
   )
 }
