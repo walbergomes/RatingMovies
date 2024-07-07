@@ -69,7 +69,7 @@ export const TagsSection = styled.div`
   gap: 20px;
 
   width: 100%;
-  background-color: ${({ theme }) => theme.COLORS.BACKGROUND_TAG};
+  background-color: #0D0C0F;
   padding: 16px;
 
   border-radius: 8px;
