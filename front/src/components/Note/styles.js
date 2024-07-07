@@ -6,6 +6,11 @@ export const Container = styled.div`
   background-color: ${({ theme }) => theme.COLORS.BACKGROUND_PINK};
   border-radius: 16px;
 
+  &:hover {
+    cursor: pointer;
+    filter: brightness(0.7);
+  }
+
   > h2 {
     color: ${({ theme }) => theme.COLORS.WHITE};
     font-size: 24px;
