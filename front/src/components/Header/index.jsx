@@ -1,4 +1,4 @@
-import { Container, Search, Profile  } from "./styles"
+import { Container, Search, Profile, Avatar  } from "./styles"
 
 import { Input } from "../Input"
 
@@ -16,9 +16,11 @@ export function Header() {
           <p>Walber Gomes</p>
           <span>sair</span>
         </div>
-        <img 
-          src="https://github.com/walbergomes.png" 
-          alt="foto do usuario" />
+        <Avatar to="/profile" >
+          <img 
+            src="https://github.com/walbergomes.png" 
+            alt="foto do usuario" />
+        </Avatar>
       </Profile>
       
     </Container>

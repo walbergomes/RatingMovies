@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { Link } from "react-router-dom";
 
 export const Container = styled.div`
   width: 100%;
@@ -14,16 +15,16 @@ export const Container = styled.div`
     font-weight: 700;
     color: ${({ theme }) => theme.COLORS.PINK};
   }
-`
+`;
 
 export const Search = styled.div`
   width: 100%;
-`
+`;
 
 export const Profile = styled.div`
   display: flex;
   gap: 9px;
-  
+
   &:hover {
     cursor: pointer;
   }
@@ -50,9 +51,11 @@ export const Profile = styled.div`
       }
     }
   }
+`;
 
+export const Avatar = styled(Link)`
   > img {
     width: 64px;
     border-radius: 50%;
   }
-`
+`;

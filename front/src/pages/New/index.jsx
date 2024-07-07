@@ -15,7 +15,7 @@ export function New() {
 
       <main>
         <header>
-          <BackButton>
+          <BackButton to="/" >
             <MdOutlineArrowBack />
             Voltar
           </BackButton>

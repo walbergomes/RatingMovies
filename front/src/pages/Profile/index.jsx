@@ -1,4 +1,5 @@
 import { Container, Form, Avatar } from "./styles";
+import { Link } from "react-router-dom";
 
 import { MdOutlineEmail, MdOutlineLock, MdOutlinePersonOutline, MdOutlineArrowBack, MdOutlineCameraAlt   } from "react-icons/md";
 
@@ -9,10 +10,10 @@ export function Profile() {
   return (
     <Container>
       <header>
-        <a href="/">
+        <Link to="/">
           <MdOutlineArrowBack />
           Voltar
-        </a>
+        </Link>
       </header>
 
       <Form>

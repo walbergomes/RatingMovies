@@ -1,5 +1,8 @@
 import styled from "styled-components";
+import { Link } from "react-router-dom";
+
 import backgroundImg from "../../assets/background.png"
+
 
 export const Container = styled.div`
   height: 100vh;
@@ -39,7 +42,7 @@ export const Form = styled.form`
   }
 `
 
-export const BackButton = styled.div`
+export const BackButton = styled(Link)`
     color: ${({ theme }) => theme.COLORS.PINK};
     display: flex;
     align-items: center;

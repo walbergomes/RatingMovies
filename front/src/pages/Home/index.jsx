@@ -1,9 +1,8 @@
-import { Container, Top } from "./styles"
+import { Container, Top, NewMovie } from "./styles"
 
 import { HiPlus } from "react-icons/hi";
 
 import { Header } from "../../components/Header"
-import { Button } from "../../components/Button"
 import { Note } from "../../components/Note";
 
 
@@ -14,7 +13,10 @@ export function Home() {
 
       <Top>
         <h2>Meus filmes</h2>
-        <Button title="Adicionar" icon={HiPlus} />
+        <NewMovie to="/new" >
+          <HiPlus />
+          Adicionar
+        </NewMovie>
       </Top>
 
       <main>

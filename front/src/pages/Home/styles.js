@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { Link } from "react-router-dom";
 
 export const Container = styled.div`
   /* height: 100vh; */
@@ -43,4 +44,20 @@ export const Top = styled.div`
  > button {
   width: 207px;
  }
+`
+
+export const NewMovie = styled(Link) `
+  display: flex;
+  align-items: center;
+  gap: 10px;
+
+  padding: 13px 40px;
+
+  background-color: ${({ theme }) => theme.COLORS.PINK };
+  color: ${({ theme }) => theme.COLORS.BACKGROUND_900 };
+  border-radius: 8px;
+
+  &:hover {
+    filter: brightness(0.7);
+  }
 `
