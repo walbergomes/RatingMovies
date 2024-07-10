@@ -9,6 +9,10 @@ const database = require("./database/sqlite")
 
 const routes = require("./routes")
 
+const uploadConfig = require("./config/upload")
+
+
+app.use("/files", express.static(uploadConfig.UPLOADS_FOLDER))
 app.use(express.json())
 app.use(routes)
 
