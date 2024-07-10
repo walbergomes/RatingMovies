@@ -1,13 +1,19 @@
 import { Container, Form, Background } from "./styles"
-
 import { MdOutlineEmail, MdOutlineLock  } from "react-icons/md";
-
 import { Link } from "react-router-dom";
+import { useContext } from "react";
+
+import { MyContext } from "../../MyContext"
 
 import { Input } from "../../components/Input"
 import { Button } from "../../components/Button";
 
 export function SignIn() {
+
+  const data = useContext(MyContext)
+  console.log("Meu contexto", data)
+  
+
   return (
     <Container>
       <Form>  
