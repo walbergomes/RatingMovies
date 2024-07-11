@@ -1,8 +1,12 @@
-import { Container, Search, Profile, Avatar  } from "./styles"
+import { Container, Search, Profile, Avatar, LogOutButton  } from "./styles"
 
 import { Input } from "../Input"
 
+import { useAuth } from "../../hooks/auth"
+
 export function Header() {
+  const { signOut } = useAuth()
+
   return (
     <Container>
       <p>RatingMovies</p>
@@ -14,7 +18,7 @@ export function Header() {
       <Profile>
         <div>
           <p>Walber Gomes</p>
-          <span>sair</span>
+          <LogOutButton onClick={signOut}>sair</LogOutButton>
         </div>
         <Avatar to="/profile" >
           <img 

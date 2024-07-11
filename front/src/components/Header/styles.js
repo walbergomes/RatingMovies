@@ -41,15 +41,6 @@ export const Profile = styled.div`
       font-weight: 700;
       white-space: nowrap;
     }
-
-    span {
-      font-size: 14px;
-      color: ${({ theme }) => theme.COLORS.GRAY_500};
-
-      &:hover {
-        filter: brightness(0.6);
-      }
-    }
   }
 `;
 
@@ -57,5 +48,16 @@ export const Avatar = styled(Link)`
   > img {
     width: 64px;
     border-radius: 50%;
+  }
+`;
+
+export const LogOutButton = styled.button`
+  border: none;
+  background: none;
+  font-size: 14px;
+  color: ${({ theme }) => theme.COLORS.GRAY_500};
+
+  &:hover {
+    filter: brightness(0.6);
   }
 `;
