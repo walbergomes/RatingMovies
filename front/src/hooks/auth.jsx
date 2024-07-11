@@ -37,11 +37,18 @@ function AuthProvider({ children }) {
   
   async function updateProfile({ user }) {
     try {
-      
-      await api.put("/users", user)
-      localStorage.setItem("@ratingmovies:user", JSON.stringify(user))
+      const { password, old_password, ...userData } = user
+      // console.log(user)
 
-      setData({ user, token: data.token })
+      // const userData = {
+      //   name: user.name,
+      //   email: user.email
+      // }
+      
+      await api.put("/users", userData)
+      localStorage.setItem("@ratingmovies:user", JSON.stringify(userData))
+
+      setData({ user: userData, token: data.token })
       alert("Perfil atualizado!")
 
     } catch (error) {
