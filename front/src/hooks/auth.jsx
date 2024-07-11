@@ -34,6 +34,24 @@ function AuthProvider({ children }) {
 
     setData({});
   }
+  
+  async function updateProfile({ user }) {
+    try {
+      
+      await api.put("/users", user)
+      localStorage.setItem("@ratingmovies:user", JSON.stringify(user))
+
+      setData({ user, token: data.token })
+      alert("Perfil atualizado!")
+
+    } catch (error) {
+      if (error.response) {
+        alert(error.response.data.message);
+      } else {
+        alert("Não foi pissível atualizar o perfil");
+      }
+    }
+  }
 
   useEffect(() => {
     const token = localStorage.getItem("@ratingmovies:token");
@@ -54,6 +72,7 @@ function AuthProvider({ children }) {
       value={{
         signIn,
         signOut,
+        updateProfile,
         user: data.user,
       }}
     >
