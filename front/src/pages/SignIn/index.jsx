@@ -1,3 +1,4 @@
+import { useState } from "react";
 import { Container, Form, Background } from "./styles"
 import { MdOutlineEmail, MdOutlineLock  } from "react-icons/md";
 import { Link } from "react-router-dom";
@@ -8,10 +9,15 @@ import { Input } from "../../components/Input"
 import { Button } from "../../components/Button";
 
 export function SignIn() {
+  const [email, setEmail] = useState("")
+  const [password, setPassword] = useState("")
 
-  const data = useAuth()
-  console.log("Meu contexto", data)
+  const { signIn } = useAuth()
 
+  function handleSignIn() {
+    signIn({ email, password })
+  }
+ 
   return (
     <Container>
       <Form>  
@@ -19,10 +25,20 @@ export function SignIn() {
         <p>Aplicação para acompanhar tudo que assistir.</p>
         <h2>Faça seu login</h2>
 
-        <Input placeholder="Email" icon={MdOutlineEmail}/>
-        <Input placeholder="Senha" icon={MdOutlineLock}/>
+        <Input 
+          placeholder="Email" 
+          type="text"
+          icon={MdOutlineEmail}
+          onChange={e => setEmail(e.target.value)}
+        />
+        <Input 
+          placeholder="Senha" 
+          icon={MdOutlineLock}
+          type="password"
+          onChange={e => setPassword(e.target.value)}
+        />
 
-        <Button title="Entrar" />
+        <Button title="Entrar" onClick={handleSignIn}/>
 
         <Link to="/register" >Criar conta</Link>
       </Form>
