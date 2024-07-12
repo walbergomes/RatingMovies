@@ -35,7 +35,7 @@ function AuthProvider({ children }) {
     setData({});
   }
   
-  async function updateProfile({ user }) {
+  async function updateProfile({ user, avatarFile }) {
     try {
       const { password, old_password, ...userData } = user
       // console.log(user)
@@ -45,10 +45,18 @@ function AuthProvider({ children }) {
       //   email: user.email
       // }
       
+      if(avatarFile) {
+        const fileUploadForm = new FormData()
+        fileUploadForm.append("avatar", avatarFile)
+
+        const response = await api.patch("/users/avatar", fileUploadForm)
+        user.avatar = response.data.avatar
+      }
+      
       await api.put("/users", userData)
       localStorage.setItem("@ratingmovies:user", JSON.stringify(userData))
 
-      setData({ user: userData, token: data.token })
+      setData({ user:userData, token: data.token })
       alert("Perfil atualizado!")
 
     } catch (error) {
