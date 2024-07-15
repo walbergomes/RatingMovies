@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 import { Container, Top, NewMovie } from "./styles"
 
 import { HiPlus } from "react-icons/hi";
@@ -15,11 +16,17 @@ export function Home() {
 
   const [notes, setNotes] = useState([])
 
+  const navigate = useNavigate()
+
+  function handlePreview(id) {
+    navigate(`/preview/${id}`)
+  }
+
   useEffect(() => {
     async function fetchNotes() {
       const response = await api.get(`/notes?title=${searchedMovie}`)
       setNotes(response.data)
-      console.log(response)
+      // console.log(response)
     }
 
     fetchNotes()
@@ -43,6 +50,7 @@ export function Home() {
           <Note 
             key={String(note.id)}
             data={note}
+            onClick={() => handlePreview(note.id)}
           />
         ))
         }

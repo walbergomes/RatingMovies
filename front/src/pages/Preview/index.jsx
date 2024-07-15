@@ -1,4 +1,4 @@
-import { Container, BackButton, Informations, RatingHeader, Stars, CreatedBy, By, TimeOfCreation, Tags } from "./styles";
+import { Container, BackButton, Informations, RatingHeader, Stars, CreatedBy, By, TimeOfCreation, Tags,  } from "./styles";
 
 import { MdOutlineArrowBack } from "react-icons/md";
 import { FaStar, FaRegStar, FaRegClock } from "react-icons/fa";
@@ -12,7 +12,7 @@ export function Preview() {
       <Header />
 
       <main>
-        <BackButton>
+        <BackButton to="/" >
           <MdOutlineArrowBack size={20} />
           <span>Voltar</span>
         </BackButton>
