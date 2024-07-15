@@ -4,10 +4,10 @@ import { FaStar, FaRegStar } from "react-icons/fa";
 
 import { Tag } from "../Tag";
 
-export function Note() {
+export function Note({ data, ...rest }) {
   return (
-    <Container>
-      <h2>Interestelar</h2>
+    <Container {...rest} >
+      <h2>{data.title}</h2>
 
       <Stars>
         <FaStar />
@@ -18,7 +18,7 @@ export function Note() {
       </Stars>
 
       <p>
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolor blanditiis sunt eligendi recusandae asperiores? Esse at quibusdam odio voluptatem placeat fugit ullam et dolores sapiente sit quos incidunt labore animi explicabo, voluptas molestias, est excepturi totam. Fugiat sunt amet adipisci voluptates, architecto aspernatur hic. Odit officiis excepturi consequatur nesciunt vel! Dolor doloremque placeat error saepe officiis atque optio ea obcaecati libero magni vitae nam provident voluptatibus laudantium repellat, perferendis incidunt maiores! Dolor architecto quasi accusamus accusantium eos, tempora dignissimos natus laudantium sunt molestias cumque? Commodi optio hic itaque quaerat doloribus. Facilis quo obcaecati numquam aperiam culpa illo id aut corporis.
+        {data.description}
       </p>
 
       <Tag name="Ficção Científica"/>

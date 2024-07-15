@@ -1,3 +1,4 @@
+import { useEffect, useState } from "react";
 import { Container, Top, NewMovie } from "./styles"
 
 import { HiPlus } from "react-icons/hi";
@@ -5,8 +6,22 @@ import { HiPlus } from "react-icons/hi";
 import { Header } from "../../components/Header"
 import { Note } from "../../components/Note";
 
+import { api } from "../../services/api";
+
 
 export function Home() {
+  const [search, setSearch] = useState("")
+  const [notes, setNotes] = useState([])
+
+  useEffect(() => {
+    async function fetchNotes() {
+      const response = await api.get(`/notes?title=${search}`)
+      setNotes(response.data)
+    }
+
+    fetchNotes()
+  }, [])
+
   return ( 
     <Container>
     <Header />
@@ -20,8 +35,14 @@ export function Home() {
       </Top>
 
       <main>
-        <Note />
-        <Note />
+        { 
+          notes.map(note => (
+          <Note 
+            key={String(note.id)}
+            data={note}
+          />
+        ))
+        }
       </main>
     </ Container>
   )
