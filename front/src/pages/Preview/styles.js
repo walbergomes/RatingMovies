@@ -12,12 +12,14 @@ export const Container = styled.div`
   }
 `
 
-export const BackButton = styled(Link)`
+export const BackButton = styled.button`
   display: flex;
   align-items: center;
   gap: 10px;
 
-  margin-bottom: ;
+  margin-bottom: 50px;
+  background: none;
+  border: none;
 
   color: ${({ theme }) => theme.COLORS.PINK};
   

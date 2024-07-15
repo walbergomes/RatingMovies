@@ -31,6 +31,10 @@ export function New() {
     setMarkers(prevState => prevState.filter(marker => marker !== deleted))
   }
 
+  function handleBack() {
+    navigate(-1)
+  }
+
   async function handleNewNote() {
     if(!title) {
       return alert("Você não colocou um título para a nota")
@@ -48,7 +52,7 @@ export function New() {
     })
 
     alert("Nota criada com sucesso")
-    navigate("/")
+    navigate(-1)
   }
 
   return (
@@ -57,7 +61,7 @@ export function New() {
 
       <main>
         <header>
-          <BackButton to="/">
+          <BackButton onClick={handleBack}>
             <MdOutlineArrowBack />
             Voltar
           </BackButton>

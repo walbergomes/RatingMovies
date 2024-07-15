@@ -1,6 +1,6 @@
 import { useState } from "react";
-import { Container, Form, Avatar } from "./styles";
-import { Link } from "react-router-dom";
+import { Container, Form, Avatar, BackButton } from "./styles";
+import { useNavigate } from "react-router-dom";
 
 import { MdOutlineEmail, MdOutlineLock, MdOutlinePersonOutline, MdOutlineArrowBack, MdOutlineCameraAlt   } from "react-icons/md";
 
@@ -23,6 +23,12 @@ export function Profile() {
   const  avatarUrl = user.avatar ? `${api.defaults.baseURL}/files/${user.avatar}` : avatarPlaceholder
   const [avatar, setAvatar] = useState(avatarUrl)
   const [avatarFile, setAvatarFile] = useState(null)
+
+  const navigate = useNavigate()
+
+  function handleBack() {
+    navigate(-1)
+  }
 
   async function handleUpdate() {
     const updated = {
@@ -48,10 +54,10 @@ export function Profile() {
   return (
     <Container>
       <header>
-        <Link to="/">
+        <BackButton onClick={handleBack}>
           <MdOutlineArrowBack />
           Voltar
-        </Link>
+        </BackButton>
       </header>
 
       <Form>

@@ -32,15 +32,20 @@ export function Preview() {
   const navigate = useNavigate()
 
   const avatarUrl = user.avatar
-    ? `${api.defaults.baseURL}/files/${user.avatar}`
-    : avatarPlaceholder;
+  ? `${api.defaults.baseURL}/files/${user.avatar}`
+  : avatarPlaceholder;
+
+
+  function handleBack() {
+    navigate(-1)
+  }
 
   async function handleRemove() {
     const confirm = window.confirm("Você realmente deseja apagar essa nota?")
 
     if(confirm) {
       await api.delete(`/notes/${params.id}`)
-      navigate("/")
+      navigate(-1)
     }
   }
   
@@ -60,7 +65,7 @@ export function Preview() {
 
       {data && (
         <main>
-          <BackButton to="/">
+          <BackButton onClick={handleBack}>
             <MdOutlineArrowBack size={20} />
             <span>Voltar</span>
           </BackButton>
