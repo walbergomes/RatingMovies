@@ -2,7 +2,7 @@ import { Container } from "./styles"
 
 import { FiPlus, FiX } from "react-icons/fi"
 
-export function Marker({ isNew, value, onCLick, ...rest }) {
+export function Marker({ isNew = false, value, onCLick, ...rest }) {
   return (
     <Container $isNew={isNew}>
       <input 
