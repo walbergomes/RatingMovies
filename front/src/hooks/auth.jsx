@@ -5,6 +5,7 @@ import { api } from "../services/api";
 export const authContext = createContext({});
 
 function AuthProvider({ children }) {
+  const [searchedMovie, setSearchedMovie] = useState("")
   const [data, setData] = useState({});
 
   async function signIn({ email, password }) {
@@ -64,6 +65,10 @@ function AuthProvider({ children }) {
     }
   }
 
+  function searchNote(title) {
+    setSearchedMovie(title)
+  }
+
   useEffect(() => {
     const token = localStorage.getItem("@ratingmovies:token");
     const user = localStorage.getItem("@ratingmovies:user");
@@ -85,6 +90,8 @@ function AuthProvider({ children }) {
         signOut,
         updateProfile,
         user: data.user,
+        searchNote,
+        searchedMovie
       }}
     >
       {children}

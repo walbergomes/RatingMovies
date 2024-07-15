@@ -7,20 +7,22 @@ import { Header } from "../../components/Header"
 import { Note } from "../../components/Note";
 
 import { api } from "../../services/api";
+import { useAuth } from "../../hooks/auth";
 
 
 export function Home() {
-  const [search, setSearch] = useState("")
+  const { searchedMovie } = useAuth()
+
   const [notes, setNotes] = useState([])
 
   useEffect(() => {
     async function fetchNotes() {
-      const response = await api.get(`/notes?title=${search}`)
+      const response = await api.get(`/notes?title=${searchedMovie}`)
       setNotes(response.data)
     }
 
     fetchNotes()
-  }, [])
+  }, [searchedMovie])
 
   return ( 
     <Container>
