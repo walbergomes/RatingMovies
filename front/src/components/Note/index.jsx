@@ -10,20 +10,20 @@ export function Note({ data, ...rest }) {
       <h2>{data.title}</h2>
 
       <Stars>
-        <FaStar />
-        <FaStar />
-        <FaStar />
-        <FaStar />
-        <FaRegStar />
+        {
+          Array.from({ length: 5 }, (_, index) => 
+            index < data.rating ? <FaStar key={index} /> : <FaRegStar key={index} />
+          )
+        }
       </Stars>
 
       <p>
         {data.description}
       </p>
 
-      <Tag name="Ficção Científica"/>
-      <Tag name="Drama"/>
-      <Tag name="Família"/>
+      {data.tags.map((tag) => (
+        <Tag key={tag.id} name={tag.name} />
+      ))}
     </Container>
   );
 }

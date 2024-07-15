@@ -44,7 +44,7 @@ export function New() {
       title,
       rating,
       description,
-      markers
+      tags: markers
     })
 
     alert("Nota criada com sucesso")

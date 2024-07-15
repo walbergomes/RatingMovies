@@ -19,6 +19,7 @@ export function Home() {
     async function fetchNotes() {
       const response = await api.get(`/notes?title=${searchedMovie}`)
       setNotes(response.data)
+      console.log(response)
     }
 
     fetchNotes()
@@ -45,6 +46,7 @@ export function Home() {
           />
         ))
         }
+        {/* {console.log(notes)} */}
       </main>
     </ Container>
   )
