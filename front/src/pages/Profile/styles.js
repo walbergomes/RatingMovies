@@ -81,3 +81,23 @@ export const Avatar = styled.div`
   }
 
 `
+
+export const BackButton = styled.button`
+  display: flex;
+  align-items: center;
+  gap: 10px;
+
+  background: none;
+  border: none;
+  color: ${({ theme })  => theme.COLORS.PINK};
+
+  cursor: pointer;
+
+  &:hover {
+    filter: brightness(0.7);
+  }
+  
+  > svg {
+    font-size: 20px;
+  }
+`

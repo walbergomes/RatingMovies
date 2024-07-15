@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import { Container, Search, Profile, Avatar, LogOutButton  } from "./styles"
 
 import { Input } from "../Input"
@@ -12,9 +13,16 @@ export function Header() {
   const [search, setSearch] = useState("")
   const { signOut, user, searchNote } = useAuth()
 
+  const navigate = useNavigate()
+
   const  avatarUrl = user.avatar ? `${api.defaults.baseURL}/files/${user.avatar}` : avatarPlaceholder
 
   searchNote(search)
+
+  function handleSignOut() {
+    navigate("/")
+    signOut()
+  }
 
   return (
     <Container>
@@ -30,7 +38,7 @@ export function Header() {
       <Profile>
         <div>
           <p>{user.name}</p>
-          <LogOutButton onClick={signOut}>sair</LogOutButton>
+          <LogOutButton onClick={handleSignOut}>sair</LogOutButton>
         </div>
         <Avatar to="/profile" >
           <img 
