@@ -18,6 +18,10 @@ export function New() {
     setNewMarker("");
   }
 
+  function handleRemoveMarker(deleted) {
+    setMarkers(prevState => prevState.filter(marker => marker !== deleted))
+  }
+
   return (
     <Container>
       <Header />
@@ -47,7 +51,7 @@ export function New() {
                 <Marker
                   key={String(index)}
                   value={marker}
-                  onCLick={() => { }}
+                  onCLick={() => handleRemoveMarker(marker)}
                 />
               ))}
               <Marker
