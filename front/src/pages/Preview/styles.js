@@ -105,3 +105,8 @@ export const Tags = styled.div`
   margin: 40px 0;
 `
 
+export const ButtonDelete = styled.button`
+  background: none;
+  border: none;
+  color: ${({ theme }) => theme.COLORS.PINK };
+`

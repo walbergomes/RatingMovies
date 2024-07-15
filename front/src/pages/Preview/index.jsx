@@ -8,8 +8,9 @@ import {
   By,
   TimeOfCreation,
   Tags,
+  ButtonDelete
 } from "./styles";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import { useState, useEffect } from "react";
 
 import { MdOutlineArrowBack } from "react-icons/md";
@@ -19,8 +20,8 @@ import avatarPlaceholder from "../../assets/avatarPlaceholder.svg";
 import { Header } from "../../components/Header";
 import { Tag } from "../../components/Tag";
 
-import { api } from "../../services/api";
 import { useAuth } from "../../hooks/auth";
+import { api } from "../../services/api";
 
 export function Preview() {
   const { user } = useAuth();
@@ -28,11 +29,21 @@ export function Preview() {
   const [data, setData] = useState(null);
 
   const params = useParams();
+  const navigate = useNavigate()
 
   const avatarUrl = user.avatar
     ? `${api.defaults.baseURL}/files/${user.avatar}`
     : avatarPlaceholder;
 
+  async function handleRemove() {
+    const confirm = window.confirm("Você realmente deseja apagar essa nota?")
+
+    if(confirm) {
+      await api.delete(`/notes/${params.id}`)
+      navigate("/")
+    }
+  }
+  
   useEffect(() => {
     async function fetchNote() {
       const response = await api.get(`/notes/${params.id}`);
@@ -68,7 +79,7 @@ export function Preview() {
               </Stars>
             </RatingHeader>
 
-            <span>Excluir nota</span>
+            <ButtonDelete onClick={handleRemove}>Excluir nota</ButtonDelete>
           </Informations>
 
           <CreatedBy>
