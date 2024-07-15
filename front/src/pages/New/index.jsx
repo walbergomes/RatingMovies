@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import { Container, BackButton, Form, Wrapper, TagsSection } from "./styles";
 
 import { MdOutlineArrowBack } from "react-icons/md";
@@ -9,9 +10,17 @@ import { TextArea } from "../../components/TextArea";
 import { Marker } from "../../components/Marker";
 import { Button } from "../../components/Button";
 
+import { api } from "../../services/api";
+
 export function New() {
+  const [title, setTitle] = useState("")
+  const [description, setDescription] = useState("")
+  const [rating, setRating] = useState("")
+
   const [markers, setMarkers] = useState([]);
   const [newMarker, setNewMarker] = useState("");
+
+  const navigate = useNavigate()
 
   function handleAddMarker() {
     setMarkers((prevState) => [...prevState, newMarker]);
@@ -20,6 +29,26 @@ export function New() {
 
   function handleRemoveMarker(deleted) {
     setMarkers(prevState => prevState.filter(marker => marker !== deleted))
+  }
+
+  async function handleNewNote() {
+    if(!title) {
+      return alert("Você não colocou um título para a nota")
+    }
+
+    if(newMarker) {
+      return alert("Você deixou um campo do marcador sem adicionar")
+    }
+
+    await api.post("/notes", {
+      title,
+      rating,
+      description,
+      markers
+    })
+
+    alert("Nota criada com sucesso")
+    navigate("/")
   }
 
   return (
@@ -37,11 +66,22 @@ export function New() {
 
         <Form>
           <Wrapper>
-            <Input placeholder="Título" type="text" />
-            <Input placeholder="Sua nota (de 0 a 5)" type="text" />
+            <Input 
+              type="text" 
+              placeholder="Título" 
+              onChange={e => setTitle(e.target.value)}
+            />
+            <Input 
+              type="text" 
+              placeholder="Sua nota (de 0 a 5)"
+              onChange={e => setRating(e.target.value)} 
+            />
           </Wrapper>
 
-          <TextArea placeholder="Observações" />
+          <TextArea 
+            placeholder="Observações"
+            onChange={e => setDescription(e.target.value)} 
+          />
 
           <section>
             <h3>Marcadores</h3>
@@ -64,7 +104,10 @@ export function New() {
             </TagsSection>
           </section>
 
-          <Button title="Salvar" />
+          <Button 
+            title="Salvar" 
+            onClick={handleNewNote} 
+          />
         </Form>
       </main>
     </Container>
